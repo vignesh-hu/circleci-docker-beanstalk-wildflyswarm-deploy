@@ -100,13 +100,6 @@
 			<groupId>org.wildfly.swarm</groupId>
 			<artifactId>jaxrs</artifactId>
 		</dependency>
-		<!-- Easy Dependencies -->
-		<dependency>
-            <groupId>com.easy</groupId>
-            <artifactId>easy-model</artifactId>
-            <version>2.0.1</version>
-            <type>jar</type>
-        </dependency>
 		<!-- Utils -->
 		<dependency>
             <groupId>junit</groupId>
