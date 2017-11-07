@@ -1,0 +1,36 @@
+machine:
+    java:
+        version: oraclejdk8
+
+    timezone:
+        America/Sao_Paulo
+
+    services:
+        - docker
+
+
+dependencies:
+  override:
+    - mvn clean install
+
+general:
+  branches:
+      only:
+        - master
+  artifacts:
+    - "target/easy-microservice-taxcalculator-swarm.jar"
+    - "target/easy-microservice-taxcalculator.war"
+test:
+  override:
+    - mvn surefire:test
+  post:
+    - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/easy-microservice-taxcalculator:$CIRCLE_BUILD_NUM .
+    
+    - mv target/easy-microservice-taxcalculator-swarm.jar $CIRCLE_ARTIFACTS/easy-microservice-taxcalculator-swarm.jar
+    - mv target/easy-microservice-taxcalculator.war $CIRCLE_ARTIFACTS/easy-microservice-taxcalculator.war
+
+deployment:
+  prod:
+    branch: master
+    commands:
+      - sh ./deploy.sh
