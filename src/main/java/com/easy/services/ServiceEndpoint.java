@@ -13,6 +13,6 @@ public class ServiceEndpoint {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public String alive() {
-		return "I'm Alive!!!";
+		return "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
 	}
 }
