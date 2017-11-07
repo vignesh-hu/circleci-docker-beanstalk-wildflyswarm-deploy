@@ -27,7 +27,7 @@ test:
     - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/hello-service:$CIRCLE_BUILD_NUM .
     
     - mv target/hello-service-swarm.jar $CIRCLE_ARTIFACTS/hello-service-swarm.jar
-    - mv target/hello-service.war $CIRCLE_ARTIFACTS/target/hello-service.war
+    - mv target/hello-service.war $CIRCLE_ARTIFACTS/hello-service.war
 
 deployment:
   prod:
