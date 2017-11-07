@@ -1,7 +1,7 @@
 FROM openjdk:8
 MAINTAINER cassiano.mangold@treasy.com.br
 
-COPY target/hello-service-swarm.jar.jar /service/hello-service-swarm.jar
+COPY target/hello-service-swarm.jar /service/hello-service-swarm.jar
 
 WORKDIR /service
 

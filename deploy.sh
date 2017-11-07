@@ -34,8 +34,8 @@ deploy_eb(){
       --version-label hello-service-$CIRCLE_BUILD_NUM --source-bundle S3Bucket=docker-eb-deployment,S3Key=hello-service/$CIRCLE_BUILD_NUM-eb-docker-package.zip
 
     # Update Elastic Beanstalk environment to new version
-#    aws elasticbeanstalk update-environment --environment-name easy-microservice-taxcalculator-env \
-#       --version-label easy-microservice-taxcalculator-$CIRCLE_BUILD_NUM
+#    aws elasticbeanstalk update-environment --environment-name hello-service-env \
+#       --version-label hello-service-$CIRCLE_BUILD_NUM
 
 }
 configure_aws_cli

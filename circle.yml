@@ -18,16 +18,16 @@ general:
       only:
         - master
   artifacts:
-    - "target/easy-microservice-taxcalculator-swarm.jar"
-    - "target/easy-microservice-taxcalculator.war"
+    - "target/hello-service-swarm.jar"
+    - "target/hello-service.war"
 test:
   override:
     - mvn surefire:test
   post:
-    - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/easy-microservice-taxcalculator:$CIRCLE_BUILD_NUM .
+    - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/hello-service:$CIRCLE_BUILD_NUM .
     
-    - mv target/easy-microservice-taxcalculator-swarm.jar $CIRCLE_ARTIFACTS/easy-microservice-taxcalculator-swarm.jar
-    - mv target/easy-microservice-taxcalculator.war $CIRCLE_ARTIFACTS/easy-microservice-taxcalculator.war
+    - mv target/hello-service-swarm.jar $CIRCLE_ARTIFACTS/hello-service-swarm.jar
+    - mv target/hello-service.war $CIRCLE_ARTIFACTS/target/hello-service.war
 
 deployment:
   prod:
