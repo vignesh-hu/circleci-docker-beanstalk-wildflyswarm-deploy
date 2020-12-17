@@ -8,7 +8,9 @@ machine:
 
     services:
         - docker
+        
 
+jobs:
 
 dependencies:
   override:
