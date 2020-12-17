@@ -5,13 +5,13 @@ JQ="jq --raw-output --exit-status"
 
 configure_aws_cli(){
 	aws --version
-	aws configure set default.region us-west-2
+	aws configure set default.region us-east-1
 	aws configure set default.output json
 }
 
 push_ecr_image(){
 	eval $(aws ecr get-login --region us-west-2)
-    docker push $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/hello-service:$CIRCLE_BUILD_NUM
+    docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/hello-service:$CIRCLE_BUILD_NUM
 }
 
 create_deploy_data(){
@@ -33,8 +33,8 @@ deploy_eb(){
     aws elasticbeanstalk create-application-version --application-name docker-app \
       --version-label hello-service-$CIRCLE_BUILD_NUM --source-bundle S3Bucket=docker-eb-deployment,S3Key=hello-service/$CIRCLE_BUILD_NUM-eb-docker-package.zip
 
-    # Update Elastic Beanstalk environment to new version
-#    aws elasticbeanstalk update-environment --environment-name hello-service-env \
+#    Update Elastic Beanstalk environment to new version
+    aws elasticbeanstalk update-environment --environment-name hello-service-env \
 #       --version-label hello-service-$CIRCLE_BUILD_NUM
 
 }
